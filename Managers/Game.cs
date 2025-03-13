@@ -44,11 +44,11 @@ namespace DungeonExplorer.Managers.Game {
             bool playing = true;
             while (playing)
             { 
-                DisplayGameStatus();
+                DisplayGameStatus(); // start of the game where the game is displayed
                 RoomManager.DisplayMap();
                 string action = GetPlayerAction();
                 playing = HandlePlayerAction(action);
-                Console.WriteLine("\n\n");
+                Console.WriteLine("\n\n"); // newlines to give better layout in console
             }
         }
 
