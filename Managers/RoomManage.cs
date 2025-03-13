@@ -7,7 +7,7 @@ using DungeonExplorer.Player;
 using DungeonExplorer.Room;
 
 
-namespace DungeonExplorer.Managers {
+namespace DungeonExplorer.Managers { // namespace to organize code throughout and decluster
     public class RoomManager {
         private Room.Room[,] rooms;
         private bool[,] visitedRooms;
@@ -15,51 +15,50 @@ namespace DungeonExplorer.Managers {
         private int currentCol;
         private string[,] levelLayout;
 
-        // Creating the first level 
-        public RoomManager()
+        
+        public RoomManager()  // Creating the first level 
         {
             InitializeRooms();
         }
 
 
-        private void InitializeRooms()
+        private void InitializeRooms() // Initialize rooms for the first level of the dungeon using a 2D structure
         {
-            // Initialize rooms for the first level of the dungeon using a 2D structure
             levelLayout = new string[,]
             {
-                    { "S", "B", "N" },
+                    { "S", "B", "N" }, // structure of level in the console with designated room types
                     { "N", "#", "N" },
                     { "N", "T", "N" }
             };
 
 
-            int rows = levelLayout.GetLength(0);
+            int rows = levelLayout.GetLength(0); // sets out column and rows for rooms layout
             int cols = levelLayout.GetLength(1);
             rooms = new Room.Room[rows, cols];
             visitedRooms = new bool[rows, cols];
 
 
-            for (int row = 0; row < rows; row++)
+            for (int row = 0; row < rows; row++) // for this position, get a room type
             {
                 for (int col = 0; col < cols; col++)
                 {
                     string cell = levelLayout[row, col];
                     RoomType roomType = GetRoomTypeFromChar(cell);
-                    if (roomType != RoomType.None)
+                    if (roomType != RoomType.None) // if roomtype isnt equal to 'roomtype.none', then a new room
                     {
                         rooms[row, col] = new Room.Room($"Room ({row},{col})", roomType);
                     }
                 }
             }
 
-            // Starts Player in the first room  at (0,0)
-            currentRow = 0;
+           
+            currentRow = 0;  // Puts player in the first room in the beginning at (0,0)
             currentCol = 0;
             visitedRooms[currentRow, currentCol] = true;
         }
 
 
-        private RoomType GetRoomTypeFromChar(string cell)
+        private RoomType GetRoomTypeFromChar(string cell) // different room types on the 2D structure
         {
             switch (cell)
             {
@@ -75,6 +74,7 @@ namespace DungeonExplorer.Managers {
                     return RoomType.Event;
                 case "#":
                     return RoomType.None; // Wall hit
+                    
                 default:
                     return RoomType.None;
             }
@@ -86,18 +86,18 @@ namespace DungeonExplorer.Managers {
         }
 
 
-        public bool MovePlayer(string direction, Player.Player player)
+        public bool MovePlayer(string direction, Player.Player player) // moves position of player
         {
             int newRow = currentRow;
             int newCol = currentCol;
 
 
-            switch (direction.ToLower())
+            switch (direction.ToLower()) // decides where to move
             {
-                case "up":
+                case "up":  // new row or column depending on users input
                     newRow--;
                     break;
-                case "down":
+                case "down":  // ++ or -- based on left and up or right and down
                     newRow++;
                     break;
                 case "left":
@@ -107,7 +107,7 @@ namespace DungeonExplorer.Managers {
                     newCol++;
                     break;
                 default:
-                    Console.WriteLine("Invalid input. Enter 'up', 'down', 'left', or 'right'.");
+                    Console.WriteLine("Invalid input. Enter: 'up', 'down', 'left', or 'right'");
                     return false;
             }
 
@@ -127,11 +127,11 @@ namespace DungeonExplorer.Managers {
             }
         }
 
-        // Display map  using 2D structure and current player position (P)
-        public void DisplayMap()
+       
+        public void DisplayMap() // Display map  using 2D structure and current player position (P)
         {
             int rows = levelLayout.GetLength(0);
-            int cols = levelLayout.GetLength(1);
+            int cols = levelLayout.GetLength(1); // creating the map, using spacing and borders
 
             // Print top border of map
             Console.WriteLine(" "); // For spacing
