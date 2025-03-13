@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using DungeonExplorer.Managers.Game;
 
 
-namespace DungeonExplorer
+namespace DungeonExplorer // start of game
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            
+
             Game game = new Game();
             game.Start();
         }
