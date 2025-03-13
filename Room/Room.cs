@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,31 +12,34 @@ namespace DungeonExplorer.Room // namespace for organizing the code into a group
     public class Room
     {
         private string description;
-        private RoomType roomType;
 
+        private List<Item.Item> items;
+
+        private RoomType roomType;
+        
 
         public Room(string description, RoomType roomType) { // for deciding which room player enters next
             switch (roomType)
         {
 
-                case RoomType.Safe: // all the different room types
-                    description += " [ SAFE ZONE ]";
-                    break;
-
                 case RoomType.Normal:
                     description += " [ NORMAL ROOM ]";
+                    break;
+                
+                case RoomType.Safe: // all the different room types
+                    description += " [ SAFE ZONE ]";
                     break;
 
                 case RoomType.Boss:
                     description += " [ BOSS ROOM ]";
                     break;
 
-                case RoomType.Shop:
-                    description += " [ SHOP ROOM ]";
-                    break;
-
                 case RoomType.Event:
                     description += " [ EVENT ROOM ]";
+                    break;
+
+                case RoomType.Shop:
+                    description += " [ SHOP ROOM ]";
                     break;
 
                 default:
@@ -45,37 +49,49 @@ namespace DungeonExplorer.Room // namespace for organizing the code into a group
 
             this.description = description;
 
+            this.items = new List<Item.Item>();
+
             this.roomType = roomType;
+
         }
 
 
-        public string GetDescription() { // returns the value of the description value to change room type
+        public
+            string GetDescription() { // returns the value of the description value to change room type
 
             return description;
+        }
+
+        public List<Item.Item> GetItems() // obtain the item in the room
+        {
+            return items;
         }
 
         public RoomType getRoomType() { // to obtain the room that the player will enter next
             return roomType;
         }
 
-        public void EnterRoom(Player.Player player) // player enters new room
-        {
-            switch (roomType)
-            {
-                case RoomType.Event: // player finds treasure room with potion in
-                    player.PickUpItem(new HealthPotion());
-                    Console.WriteLine("You discovered a treasure room. Obtained a health potion!");
-                    break;
-                    
-                case RoomType.None: // player doesn't enter room
-                    Console.WriteLine("You hit a wall.");
-                    break;
 
-                default: //player enters one of the listed potential rooms
-                    Console.WriteLine("You enter a " + roomType.ToString().ToLower() + " room.");
-                    break;
-            }
+        public void AddItem(Item.Item item)
+        {
+            items.Add(item);
         }
+
+        public void EnterRoom(Player.Player player) // code for the player entering a room 
+        {
+            Console.WriteLine("You enter a " + roomType.ToString().ToLower() + " room!");
+            if (items.Count > 0)
+            {
+                Console.WriteLine("You found the following items:");
+                foreach (var item in items)
+                {
+                    Console.WriteLine($"- {item.Name} (ID: {item.Id})");
+                    player.PickUpItem(item); // Item is picked up by player
+                }
+                items.Clear(); // Clear items from room after they get picked up by player
+            }
     }
 }
+
+
 
