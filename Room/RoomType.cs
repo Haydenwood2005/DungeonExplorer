@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DungeonExplorer.Room
+namespace DungeonExplorer.Room // all the room types in the game
 {
     public enum RoomType
     {
-        Safe,
         Normal,
+        Safe,
         Boss,
+        Event,
         Shop,
-        Event
+        None
     }
 }
