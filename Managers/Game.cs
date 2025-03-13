@@ -12,11 +12,25 @@ using DungeonExplorer.Item.Items;
 namespace DungeonExplorer.Managers.Game {
     internal class Game {
         private Player.Player Player { get; set; } // Properties
+        private RoomManager RoomManager { get; set; }
         private Room.Room CurrentRoom { get; set; }
 
 
         public Game()
         {
+             Console.Clear(); // clears console for new game
+
+ string playername = string.Empty;
+ while (string.IsNullOrWhiteSpace(playername))
+ {
+     Console.WriteLine("What would you like to call this character?"); // asks user to name character
+     Console.Write("Name: ");
+     playername = Console.ReadLine();
+     if (string.IsNullOrWhiteSpace(playername)) // if name is empty, asks user to try again and input one
+     {
+         Console.WriteLine("Player name cannot be empty. Please enter a valid name.");
+     }
+ }
             // Initialize the game with one room and one player
             Player = new Player.Player("Player", 100);
             Player.PickUpItem(new HealthPotion());
@@ -94,6 +108,22 @@ namespace DungeonExplorer.Managers.Game {
                 else
                 {
                     Console.WriteLine("Input was invalid. Try again.");
+                }
+                }
+                else if (action.StartsWith("pick up", StringComparison.OrdinalIgnoreCase))
+                {
+                    var itemName = action.Substring("pick up".Length).Trim();
+                    var item = CurrentRoom.GetItems().FirstOrDefault(i => i.Name.Equals(itemName, StringComparison.OrdinalIgnoreCase));
+                    if (item != null)
+                    {
+                        Player.PickUpItem(item);
+                        CurrentRoom.GetItems().Remove(item);
+                        Console.WriteLine($"You found a {item.Name}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Item is not in current room.");
+                    }
                 }
             }
             else if (action.Equals("move up", StringComparison.OrdinalIgnoreCase) ||
