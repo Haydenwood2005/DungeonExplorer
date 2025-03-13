@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DungeonExplorer.Item.Items;
 
 
-namespace DungeonExplorer.Room
+namespace DungeonExplorer.Room // namespace for organizing the code into a group 
 {
     public class Room
     {
@@ -14,12 +14,11 @@ namespace DungeonExplorer.Room
         private RoomType roomType;
 
 
-        public Room(string description, RoomType roomType) {
-            // Implement additional text formatting for the type of room
+        public Room(string description, RoomType roomType) { // for deciding which room player enters next
             switch (roomType)
         {
 
-                case RoomType.Safe:
+                case RoomType.Safe: // all the different room types
                     description += " [ SAFE ZONE ]";
                     break;
 
@@ -50,30 +49,30 @@ namespace DungeonExplorer.Room
         }
 
 
-        public string GetDescription() {
+        public string GetDescription() { // returns the value of the description value to change room type
 
             return description;
         }
 
-        public RoomType getRoomType() {
+        public RoomType getRoomType() { // to obtain the room that the player will enter next
             return roomType;
         }
 
-        public void EnterRoom(Player.Player player)
+        public void EnterRoom(Player.Player player) // player enters new room
         {
             switch (roomType)
             {
-                case RoomType.Event:
+                case RoomType.Event: // player finds treasure room with potion in
                     player.PickUpItem(new HealthPotion());
                     Console.WriteLine("You discovered a treasure room. Obtained a health potion!");
                     break;
                     
-                case RoomType.None:
+                case RoomType.None: // player doesn't enter room
                     Console.WriteLine("You hit a wall.");
                     break;
 
-                default:
-                    Console.WriteLine("You entered a " + roomType.ToString().ToLower() + " room.");
+                default: //player enters one of the listed potential rooms
+                    Console.WriteLine("You enter a " + roomType.ToString().ToLower() + " room.");
                     break;
             }
         }
