@@ -26,10 +26,10 @@ namespace DungeonExplorer.Managers.Game {
 
         public void Start()
         {
-            // Change the playing logic into true and populate the while loop
+            // Changed the playing logic into true and populated the while loop
             bool playing = true;
             while (playing)
-            { // Code your playing logic here
+            { 
                 DisplayGameStatus();
                 RoomManager.DisplayMap();
                 string action = GetPlayerAction();
@@ -40,25 +40,23 @@ namespace DungeonExplorer.Managers.Game {
 
 
         private void DisplayGameStatus()
-        {
-            // Method to display the player's health and inventory
+        { // Show the user the players stats and attributes
             Console.WriteLine("--- GAME STATS ---");
-            Console.WriteLine($"Players Current Health: {Player.Health}/{Player.getMaxHealth()}");
+            Console.WriteLine($"Players Current Health: {Player.Health}/{Player.getMaxHealth()}"); // shows players health
             Console.WriteLine();
-            Console.WriteLine("Players Current Inventory:");
+            Console.WriteLine("Players Current Inventory:"); // shows players inventory
             foreach (var item in Player.InventoryContents())
             {
-                Console.WriteLine($"- {item.Name} (ID: {item.Id})");
+                Console.WriteLine($"- {item.Name} (ID: {item.Id})"); // shows amount of which item player has in inventory
             }
             Console.WriteLine();
-            Console.WriteLine($"Current Room: {CurrentRoom.GetDescription()}");
+            Console.WriteLine($"Current Room: {CurrentRoom.GetDescription()}"); // shows user which room player is currently in
             Console.WriteLine("----------------");
             Console.WriteLine();
         }
 
         private string GetPlayerAction()
-        {
-            // A method to show the actions that are possible, and get the player's decision
+        {  // Asks user what they would like the player to do.
             Console.WriteLine("What action would you like to do?");
             DisplayPlayerActions();
             Console.Write("> ");
@@ -67,8 +65,7 @@ namespace DungeonExplorer.Managers.Game {
 
 
         private void DisplayPlayerActions()
-        {
-            // Method to display all the actions the player has
+        { // Way to show the user all the options the player has at the curent time.
             Console.WriteLine("Actions available:");
             foreach (var item in Player.InventoryContents())
             {
@@ -86,8 +83,7 @@ namespace DungeonExplorer.Managers.Game {
         }
 
         private bool HandlePlayerAction(string action)
-        {
-            // Method to handle player actions
+        { // Method to handle player actions
             if (int.TryParse(action, out int itemId))
             {
                 var item = Player.InventoryContents().FirstOrDefault(i => i.Id == itemId);
