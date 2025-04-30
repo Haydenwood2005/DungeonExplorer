@@ -3,19 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DungeonExplorer.Managers.Game;
 
 
-namespace DungeonExplorer // start of game
+namespace DungeonExplorer
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            
+        private Testing testingClass;
+        public static Game game;
 
-            Game game = new Game();
-            game.Start();
+        private static Weapons weapons { get; set; }
+        private static WeaponModifiers weaponMods { get; set; }
+
+        static public void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to The Dungeon Explorer. Press any button to start the game, or press (T) to open the testing menu.");
+            Console.WriteLine("");
+
+            weapons = new Weapons();
+            weaponMods = new WeaponModifiers();
+
+            var inputKey = Console.ReadKey().Key;
+          
+            if (inputKey == ConsoleKey.T)
+            {
+                Testing.testingDebug();          
+            }
+            else 
+            {
+                // Start the game.
+
+                game = new Game();
+            }
+
+          
         }
+
+        public static void ClearConsole()
+        {
+            Console.Clear();
+        }
+
+
     }
 }
