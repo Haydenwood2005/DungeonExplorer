@@ -12,18 +12,19 @@ namespace DungeonExplorer
         private static string[] sharp = new string[]
         {
             "sharp",
-            "25" // The % of damage added onto attack to hit monster.
+            "25" // The % of damage added onto attack from weapon to hit monster for additional damage.
         };
 
         private static string[] heavy = new string[]
         {
             "heavy",
-            "15" // The % of damage added onto attack to hit monster.
+            "15" // The % of damage added onto attack from weapon to hit monster for additional damage.
         };
 
         public WeaponModifiers()
         {
             Items.Allitems.Add(sharp);
+            
             Items.Allitems.Add(heavy);
         }
     }
