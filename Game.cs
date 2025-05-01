@@ -22,12 +22,15 @@ namespace DungeonExplorer
         public void Start()
         {
             Console.WriteLine($"\nSo your name is {Player.Name}?");
+            
             Console.WriteLine("You have " + Player.Health + " health points.");
+            
             Console.WriteLine("You can move to the next room and make decisions when shown on screen.\n");
 
             Program.ClearConsole();
 
-            Console.WriteLine("You, " + Player.Name + ", start your journey in an eery, mysterious cave. A cool breeze washes over you as you try to peer into the darkness only to see nothing. You're too deep in this adventure to turn back now. You build the courage to step forward into the nothingness.");
+            Console.WriteLine("You, " + Player.Name + ", start your journey in an eerie, mysterious cave. A cool breeze washes over you as you try to peer into the darkness only to see nothing. You're too deep in this adventure to turn back now. You build the courage to step forward into the nothingness.");
+            
             Console.WriteLine("Press any key to continue your journey...\n");
 
             Console.ReadKey();
@@ -51,7 +54,9 @@ namespace DungeonExplorer
             public static void PlayerInput()
             {
                 Console.WriteLine("What action would you like to carry out?");
+                
                 Console.WriteLine("You have " + Player.Health + " health points.");
+                
                 Console.WriteLine("Press Q for the menu.");
 
                 Console.WriteLine("");
@@ -66,6 +71,7 @@ namespace DungeonExplorer
                     List<string> roomItems = Room.GetItems();
 
                     Console.WriteLine(string.Join(", ", roomItems));
+                    
                     Console.WriteLine("Type out the item you wish to interact with...");
 
                     var inputItem = Console.ReadLine();
@@ -91,6 +97,7 @@ namespace DungeonExplorer
                 {
                     // Player moves to the next room.
                     Console.WriteLine("You move into the next room");
+                    
                     Room.GetDescription();
                     PlayerInput();
                     ///currentRoom = 2;
@@ -100,7 +107,9 @@ namespace DungeonExplorer
                 {
 
                     Console.WriteLine("Press (C) to look around the room for any items");
+                    
                     Console.WriteLine("Press (I) to check your current inventory");
+                    
                     Console.WriteLine("Press (F) to move into the next room");
                     PlayerInput();
                 }
