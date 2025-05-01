@@ -12,7 +12,9 @@ namespace DungeonExplorer
 
         // The list of available items in each room.
         public static List<string> room1Items = new List<string> { "dagger" };
+        
         public static List<string> room2Items = new List<string> { "sword", "20 copper coins", "undesiphered notes" };
+        
         public static List<string> room3Items = new List<string> { "shield", "30 gold coins", "dusty coat" };
 
         public static List<string> RoomDescriptions = new List<string>();
@@ -20,7 +22,7 @@ namespace DungeonExplorer
 
         public Room()
         {
-            // Lists all of the accessible areas of the map.
+            // Lists all of the accessible areas of the map and their descriptions.
             RoomDescriptions.Add(Gamemap._room1Description);
             RoomDescriptions.Add(Gamemap._room2Description);
             RoomDescriptions.Add(Gamemap._room3Description);
@@ -45,7 +47,7 @@ namespace DungeonExplorer
                 Debug.WriteLine("Room description not found.");
             }
 
-            /// Console.WriteLine(roomItems);
+            /// Console.WriteLine(roomItems);         // Tested code.
             Console.WriteLine(roomDescription);
 
             return roomDescription;
