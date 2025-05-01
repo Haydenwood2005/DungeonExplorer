@@ -32,16 +32,14 @@ namespace DungeonExplorer
             var monsterName = Monster.Name;
             int monsterHealth = Monster.Health;
 
-            currentMonsterHealth = monsterHealth;
+            currentMonsterHealth = monsterHealth; // Establishes the Combat instance of the player whether the user is testing, or establishes the Game.player instance if the user is playing the game.
 
-            // Establishes the Combat instance of the player whether the user is testing, or establishes the Game.player instance if the user is playing the game.
-            
         }
 
 
         public void StartCombat(Player player)
         {
-            ///if (Testing._testing == true)            // tested code
+            ///if (Testing._testing == true)                               // tested code
             //{
             //    currentPlayer = Testing.testingPlayer;
             //    CombatLinearInput();
