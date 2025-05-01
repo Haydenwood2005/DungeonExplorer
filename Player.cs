@@ -40,8 +40,11 @@ namespace DungeonExplorer
 
             // Main text for the combat game. Shows equipped weapon, total damage dealt, damage added by the modifier (if equipped) and the monsters remaining health.
             Console.WriteLine($"\n Your equipped weapon = {Inventory.equipedItem}");
-            Console.WriteLine($"You hit the monster and dealt {totalDamageDealt} damage!"); 
+            
+            Console.WriteLine($"You hit the monster and dealt {totalDamageDealt} damage!");
+            
             Console.WriteLine($"With your modified weapon you deal an extra {modifiedDamageDealt} to the monster");
+            
             Console.WriteLine($"The monster has {monsterHealthRemaining} health points left!");
 
             // Checks if monsters health is <= 0 after each turn. It then goes to an option screen for players input.
