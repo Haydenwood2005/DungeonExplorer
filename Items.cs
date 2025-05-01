@@ -12,7 +12,7 @@ namespace DungeonExplorer
     {
         public static List<string[]> Allitems = new List<string[]>();
 
-        //goes into the weapon and specifically calls the modifiers for each weapon
+        // Calls the modifiers for each weapon
         public static int GetDamageModifier(string item)
         {
             for (int i = 0; i < Allitems.Count; i++)
