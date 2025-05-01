@@ -13,11 +13,13 @@ namespace DungeonExplorer
         public static Game game;
 
         private static Weapons weapons { get; set; }
+        
         private static WeaponModifiers weaponMods { get; set; }
 
         static public void Main(string[] args)
         {
-            Console.WriteLine("Welcome to The Dungeon Explorer. Press any button to start the game, or press (T) to open the testing menu.");
+            Console.WriteLine("Welcome to The Dungeon Explorer. Press any key to start the game, or press (T) to open the testing menu.");
+            
             Console.WriteLine("");
 
             weapons = new Weapons();
