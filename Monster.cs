@@ -15,6 +15,7 @@ namespace DungeonExplorer
     class Monster : Creature
     {
         public static string Name { get; private set; }
+        
         public static int Health { get; private set; }
 
         public static Combat combat;
@@ -42,7 +43,9 @@ namespace DungeonExplorer
             // Shows the damage the monster did to the player and prints the players new health after damage.
             Program.ClearConsole();
             Console.WriteLine($"You were hit and took {MonsterDamageDealt} damage!");
+            
             Console.WriteLine($"You have {currentPlayerHealth} health points left!");
+            
             Console.WriteLine($"Type (A) to attack or type (E) to equip weapon");
            
             // Program finished if players health is <= 0.
