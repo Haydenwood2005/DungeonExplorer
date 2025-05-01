@@ -24,6 +24,7 @@ namespace DungeonExplorer
         public Weapons() 
         {
             Items.Allitems.Add(dagger);
+            
             Items.Allitems.Add(sword);
         }
     }
