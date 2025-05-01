@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DungeonExplorer // Creates an overridable function for the player and monster classes to call from in combat.
+// Creates an overridable function for the player and monster classes to call from in combat.
+namespace DungeonExplorer 
 {
     abstract class Creature
     {
