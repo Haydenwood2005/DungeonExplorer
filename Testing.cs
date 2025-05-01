@@ -18,7 +18,7 @@ namespace DungeonExplorer
 
         public static void testingDebug() 
         {
-            Console.WriteLine("Welcome to the Testing Class! What is it you would like to test today?");
+            Console.WriteLine("Welcome to the Testing Room! What is it you would like to test today?");
             Console.WriteLine("Input (C) for combat test.");
             _testing = true;
 
