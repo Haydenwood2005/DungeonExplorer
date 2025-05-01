@@ -15,7 +15,8 @@ namespace DungeonExplorer
 
         public static void InventoryContents()
         {
-            Console.WriteLine($"Your inventory consists of the folowing items: {string.Join(", ", inventory)}");
+            Console.WriteLine($"Your inventory consists of the following items: {string.Join(", ", inventory)}");
+            
             Console.WriteLine("Write down the item name to equip it.");
 
             var inputInv = Console.ReadLine();
@@ -24,7 +25,7 @@ namespace DungeonExplorer
             {
                 Console.WriteLine($"You have equipped {inputInv}");
                 ///Console.WriteLine(ItemDes);
-                ///string equipedItem = inputInv;
+                ///string equipedItem = inputInv;     // Tested code.
 
                 equipedItem = inputInv;
             }
